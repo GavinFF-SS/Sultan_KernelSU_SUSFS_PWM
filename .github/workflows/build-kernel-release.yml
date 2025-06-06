@@ -28,7 +28,6 @@ jobs:
     secrets: inherit
     with:
       codename: "zuma"
-      owner: "GavinFF-SS"
       repo: "android_kernel_google_zuma"
       android_version: "android14"
       kernel_version: "6.1"
@@ -38,7 +37,6 @@ jobs:
     secrets: inherit
     with:
       codename: "zumapro"
-      owner: "kerneltoast"
       repo: "android_kernel_google_zumapro"
       android_version: "android14"
       kernel_version: "6.1"
@@ -51,8 +49,8 @@ jobs:
         - build-kernel-zumapro
     if: ${{ inputs.make_release }}
     env:
-      REPO_OWNER: TheWildJames
-      REPO_NAME: Sultan_KernelSU_SUSFS
+      REPO_OWNER: GavinFF-SS
+      REPO_NAME: Sultan_KernelSU_SUSFS_PWM
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       RELEASE_NAME: "*TEST BUILD* Sultan Kernels With KernelSU Next & SUSFS v1.5.7 *TEST BUILD*"
       RELEASE_NOTES: |

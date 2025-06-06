@@ -44,6 +44,7 @@ jobs:
       - name: Set CONFIG Environment Variable
         run: |
           CONFIG="${{ inputs.repo }}"
+          CONFIG="${{ inputs.owner }}"
           
           # Set CONFIG as an environment variable for future steps
           echo "CONFIG=$CONFIG" >> $GITHUB_ENV
@@ -68,10 +69,7 @@ jobs:
           git checkout b5c3ada461a61c6ad033693b7a00494ead3a28fd
           cd ..
           git clone https://github.com/TheWildJames/kernel_patches.git
-          if [ "${{ inputs.codename }}" == "zuma" ]; then
-            git clone https://github.com/GavinFF-SS/${{ inputs.repo }}
-          fi
-          git clone https://github.com/kerneltoast/${{ inputs.repo }}
+          git clone https://github.com/${{ inputs.owner }}/${{ inputs.repo }}
       
       - name: Add KernelSU
         run: |

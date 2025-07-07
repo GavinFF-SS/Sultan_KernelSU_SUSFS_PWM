@@ -54,15 +54,17 @@ jobs:
         run: |
           echo "Cloning AnyKernel3 and other dependencies..."
           
-          ANYKERNEL_BRANCH="15.0.0-sultan-${{ inputs.codename }}"
           SUSFS_BRANCH="gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}"
 
           # Debug print the branches
-          echo "Using branch for AnyKernel3: $ANYKERNEL_BRANCH"
           echo "Using branch for SUSFS: $SUSFS_BRANCH"
 
           # Clone repositories using the branch names
-          git clone https://github.com/TheWildJames/AnyKernel3.git -b "$ANYKERNEL_BRANCH"
+          if [ "${{ inputs.codename }}" == "zuma" ]; then
+            git clone https://github.com/GavinFF-SS/AnyKernel3.git -b 15.0.0-sultan-zuma
+          elif [ "${{ inputs.codename }}" == "zumapro" ]; then
+            git clone https://github.com/WildKernels/AnyKernel3.git -b  15.0.0-sultan-zumapro
+          fi
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
           cd susfs4ksu
           git checkout a26ba8380e1d10b2169b8148967c4f5108c2a3f7
@@ -224,7 +226,7 @@ jobs:
           cd ./AnyKernel3
 
           # Zip the files in the AnyKernel3 directory with a new naming convention
-          ZIP_NAME="${{ inputs.codename }}_A15_Sultan_Next_SUSFS.zip"
+          ZIP_NAME="${{ inputs.codename }}_A15_Sultan_Next_SUSFS_PWM.zip"
           echo "Creating zip file $ZIP_NAME..."
           zip -r "../$ZIP_NAME" ./*
           

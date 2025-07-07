@@ -65,7 +65,7 @@ jobs:
           git clone https://github.com/TheWildJames/AnyKernel3.git -b "$ANYKERNEL_BRANCH"
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
           cd susfs4ksu
-          git checkout a4ad7c95da0dddc67ca9661dae0ef83da7464714
+          git checkout a26ba8380e1d10b2169b8148967c4f5108c2a3f7
           cd ..
           git clone https://github.com/TheWildJames/kernel_patches.git
           if [ "${{ inputs.codename }}" == "zuma" ]; then

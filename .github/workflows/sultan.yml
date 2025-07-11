@@ -60,21 +60,13 @@ jobs:
           echo "Using branch for SUSFS: $SUSFS_BRANCH"
 
           # Clone repositories using the branch names
-          if [ "${{ inputs.codename }}" == "zuma" ]; then
-            git clone https://github.com/GavinFF-SS/AnyKernel3.git -b 15.0.0-sultan-zuma
-          elif [ "${{ inputs.codename }}" == "zumapro" ]; then
-            git clone https://github.com/WildKernels/AnyKernel3.git -b  15.0.0-sultan-zumapro
-          fi
+          git clone https://github.com/GavinFF-SS/AnyKernel3.git -b 15.0.0-sultan-zuma
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
           cd susfs4ksu
           git checkout a26ba8380e1d10b2169b8148967c4f5108c2a3f7
           cd ..
           git clone https://github.com/TheWildJames/kernel_patches.git
-          if [ "${{ inputs.codename }}" == "zuma" ]; then
-            git clone https://github.com/GavinFF-SS/${{ inputs.repo }}
-          elif [ "${{ inputs.codename }}" == "zumapro" ]; then
-            git clone https://github.com/kerneltoast/${{ inputs.repo }}
-          fi
+          git clone https://github.com/kerneltoast/${{ inputs.repo }}
       
       - name: Add KernelSU
         run: |

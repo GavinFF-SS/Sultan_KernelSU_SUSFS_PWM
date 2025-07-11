@@ -199,7 +199,7 @@ jobs:
           
           # Long localversion suffix(es).
           echo "Running sed commands..."
-          sed -i 's/CONFIG_LOCALVERSION="-Sultan-PWM-Mod"/CONFIG_LOCALVERSION="-Sultan-Wild-PWM-Mod-FF"/' ./arch/arm64/configs/${{ inputs.codename }}_defconfig
+          sed -i 's/CONFIG_LOCALVERSION="-Sultan"/CONFIG_LOCALVERSION="-Sultan-Wild-FF"/' ./arch/arm64/configs/${{ inputs.codename }}_defconfig
 
       - name: Build the Kernel
         run: |
@@ -236,7 +236,7 @@ jobs:
           cd ./AnyKernel3
 
           # Zip the files in the AnyKernel3 directory with a new naming convention
-          ZIP_NAME="${{ inputs.codename }}_A15_Sultan_Next_SUSFS_PWM.zip"
+          ZIP_NAME="${{ inputs.codename }}_A15_Sultan_Next_SUSFS.zip"
           echo "Creating zip file $ZIP_NAME..."
           zip -r "../$ZIP_NAME" ./*
           
